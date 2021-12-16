@@ -5,7 +5,8 @@ const router = express.Router();
 
 const Recipes = require("../data");
 const recipeMap = Recipes.map((element) => {
-    return element.recipes
+     
+    return [element.recipes[0].name, element.recipes[1].name, element.recipes[2].name]
 })
 
 router.get("/", (req, res) => {
@@ -18,6 +19,7 @@ router.get("/recipes", (req, res) => {
         recipeNames: recipeMap
     }
    res.json(recipeObj);
+
 });
 
 router.get('/recipes/details/:name'), (req, res) => {
