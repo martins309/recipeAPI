@@ -33,10 +33,11 @@ const ingredientMap = Recipes.map((element) => {
 
 router.get("/recipes/details/:name", (req, res) => {
     const { name } = req.params;
-    if(name === recipeMap){
-        return ingredientMap
+  
+    const ingredientObj = {
+        details: name
     }
-  res.json(ingredientMap);
+  res.json(ingredientObj);
 });
 
 module.exports = router;
