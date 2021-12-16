@@ -10,7 +10,7 @@ const recipeMap = Recipes.map((element) => {
 })
 
 router.get("/", (req, res) => {
-  res.send("The router seems to be working");
+  res.json(Recipes);
 });
 
 router.get("/recipes", (req, res) => {
