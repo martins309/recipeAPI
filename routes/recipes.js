@@ -12,15 +12,15 @@ let recipeMap = Recipes.map((element) => {
   ];
 });
 
-let ingredientMap = Recipes.map((element) => {
-  return [
-    element.recipes[0].ingredients,
-    element.recipes[1].ingredients,
-    element.recipes[2].ingredients,
-  ];
-});
+// let ingredientMap = Recipes.map((element) => {
+//   return [
+//     element.recipes[0].ingredients,
+//     element.recipes[1].ingredients,
+//     element.recipes[2].ingredients,
+//   ];
+// });
 
-let IngredientMap1 = Recipes.map((element) => {
+let ingredientMap1 = Recipes.map((element) => {
   return [
     element.recipes[0].ingredients[0],
     element.recipes[1].ingredients[1],
@@ -57,13 +57,15 @@ router.get("/recipes", (req, res) => {
   res.json(recipeObj);
 });
 
-router.get("/recipes/details/:name", (req, res) => {
+router.get("/recipes/details", (req, res) => {
   const { name } = req.params;
   const recipes = Recipes.map(() => {
-      return  name
+      return  name;
   });
 
-  res.json(recipes);
+  let results = [ingredientMap1, ingredientMap2, ingredientMap3]
+
+  res.json(results[0]);
 });
 
 module.exports = router;
