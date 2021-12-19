@@ -57,15 +57,25 @@ router.get("/recipes", (req, res) => {
   res.json(recipeObj);
 });
 
-router.get("/recipes/details", (req, res) => {
+router.get("/recipes/details/:name", (req, res) => {
   const { name } = req.params;
   const recipes = Recipes.map(() => {
-      return  name;
+    if (name === recipes) {
+        return Recipes[0].recipes[0];
+    }
+      return name
   });
+
+ 
+  
+
+  
+  
+  
 
   let results = [ingredientMap1, ingredientMap2, ingredientMap3]
 
-  res.json(results[0]);
+  res.json(recipes);
 });
 
 module.exports = router;
