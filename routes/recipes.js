@@ -3,7 +3,7 @@ const express = require("express");
 const { reverse } = require("../data");
 const router = express.Router();
 
-const Recipes = require("../data");
+const  { Recipes }  = require("../data");
 let recipeMap = Recipes.map((element) => {
   return [
     element.recipes[0].name,
@@ -58,13 +58,10 @@ router.get("/recipes", (req, res) => {
 });
 
 router.get("/recipes/details/:name", (req, res) => {
-  const { name } = req.params;
-  const recipes = Recipes.map(() => {
-    if (name === recipes) {
-        return Recipes[0].recipes[0];
-    }
-      return name
-  });
+    const { name } = req.params;  
+    const recipeThatIwantIngredientsFor = Recipes.filter(eachRecipe => eachRecipe.name === name)
+        
+    res.json(recipeThatIwantIngredientsFor.ingredrients)
 
  
   
