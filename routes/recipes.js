@@ -1,81 +1,30 @@
-const { application } = require("express");
-const express = require("express");
-const { reverse } = require("../data");
-const router = express.Router();
+const router = require("express").Router()
 
-const Recipes = require("../data");
-let recipeMap = Recipes.map((element) => {
-  return [
-    element.recipes[0].name,
-    element.recipes[1].name,
-    element.recipes[2].name,
-  ];
-});
+/*
+This Recipe API data looks like this:
+[
+  {
+    recipes: [recipeData, recipeData, ...]
+  }
+]
 
-// let ingredientMap = Recipes.map((element) => {
-//   return [
-//     element.recipes[0].ingredients,
-//     element.recipes[1].ingredients,
-//     element.recipes[2].ingredients,
-//   ];
-// });
+which means inorder to git it you have to first refrence the data is RecipeApiData[0] 
 
-let ingredientMap1 = Recipes.map((element) => {
-  return [
-    element.recipes[0].ingredients[0],
-    element.recipes[1].ingredients[1],
-    element.recipes[1].ingredients[2],
-  ];
-});
+Now... you can descructure from that.
 
-let ingredientMap2 = Recipes.map((element) => {
-  return [
-    element.recipes[1].ingredients[0],
-    element.recipes[1].ingredients[1],
-    element.recipes[1].ingredients[2],
-    element.recipes[1].ingredients[3],
-  ];
-});
 
-let ingredientMap3 = Recipes.map((element) => {
-  return [
-    element.recipes[2].ingredients[0],
-    element.recipes[2].ingredients[1],
-    element.recipes[2].ingredients[2],
-    element.recipes[2].ingredients[3],
-  ];
-});
+const [{recipes}] = require("../data");
+const { recipes } = RecipeApiData[0]
 
-router.get("/", (req, res) => {
-  res.json(Recipes);
-});
 
-router.get("/recipes", (req, res) => {
-  const recipeObj = {
-    recipeNames: recipeMap,
-  };
-  res.json(recipeObj);
-});
+but this can be destructured using nested destructuring...
+and now you have your recipes :)
 
-router.get("/recipes/details/:name", (req, res) => {
-  const { name } = req.params;
-  const recipes = Recipes.map(() => {
-    if (name === recipes) {
-        return Recipes[0].recipes[0];
-    }
-      return name
-  });
+also.. though good practice... semi-colons are no longer required in javascript 
+*/
 
- 
-  
+const [{recipes}] = require("../data")
 
-  
-  
-  
-
-  let results = [ingredientMap1, ingredientMap2, ingredientMap3]
-
-  res.json(recipes);
-});
+console.log("This is my recipe data:", recipes)
 
 module.exports = router;
