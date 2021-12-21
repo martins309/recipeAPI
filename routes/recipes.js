@@ -4,13 +4,7 @@ const { reverse } = require("../data");
 const router = express.Router();
 
 const  { Recipes }  = require("../data");
-let recipeMap = Recipes.map((element) => {
-  return [
-    element.recipes[0].name,
-    element.recipes[1].name,
-    element.recipes[2].name,
-  ];
-});
+let recipeMap = Recipes.map((recipeName) => recipeName.name );
 
 // let ingredientMap = Recipes.map((element) => {
 //   return [
@@ -19,6 +13,7 @@ let recipeMap = Recipes.map((element) => {
 //     element.recipes[2].ingredients,
 //   ];
 // });
+
 
 let ingredientMap1 = Recipes.map((element) => {
   return [
