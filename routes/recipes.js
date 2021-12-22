@@ -8,38 +8,26 @@ const[{recipes}] = require("../data");
 
 
 
-
-
-
 router.get("/", (req, res) => {
   res.json(recipes);
-  console.log('this is my recipes', recipes)
+  console.log('this is my recipes', Recipes)
 });
 
-// router.get("/recipes", (req, res) => {
-//     const 
-//   const recipeObj = {
-//     recipeNames: recipeMap
-//   };
-//   res.json(recipeObj);
-// });
+router.get("/recipes", (req, res) => {
+    
+  const recipeObj = {
+    recipeNames: [recipes[0].name, recipes[1].name, recipes[2].name]
+  };
+  res.json(recipeObj);
+});
 
-// router.get("/recipes/details/:name", (req, res) => {
-//     const { name } = req.params;  
-//     const recipeThatIwantIngredientsFor = recipes.filter(eachRecipe => eachRecipe.name === name)
+router.get("/recipes/details/:name", (req, res) => {
+    const { name } = req.params;  
+    const recipeThatIwantIngredientsFor = recipes.filter(eachRecipe => eachRecipe.name.toLowerCase() === name.toLowerCase())
+
+    res.json(recipeThatIwantIngredientsFor)
         
-//     res.json(recipeThatIwantIngredientsFor.ingredrients)
-
- 
-  
-
-  
-  
-  
-
-//   let results = [ingredientMap1, ingredientMap2, ingredientMap3]
-
-//   res.json(recipes);
-// });
+    console.log(recipeThatIwantIngredientsFor)
+});
 
 module.exports = router;
