@@ -10,7 +10,7 @@ const[{recipes}] = require("../data");
 
 router.get("/", (req, res) => {
   res.json(recipes);
-  console.log('this is my recipes', Recipes)
+  console.log('this is my recipes', recipes)
 });
 
 router.get("/recipes", (req, res) => {
@@ -24,10 +24,15 @@ router.get("/recipes", (req, res) => {
 router.get("/recipes/details/:name", (req, res) => {
     const { name } = req.params;  
     const recipeThatIwantIngredientsFor = recipes.filter(eachRecipe => eachRecipe.name.toLowerCase() === name.toLowerCase())
+    name ? recipeThatIwantIngredientsFor[0].ingredients : null
 
-    res.json(recipeThatIwantIngredientsFor)
+    const details = {
+        ingredients: recipeThatIwantIngredientsFor[0].ingredients
+    }
+
+    res.json(details)
         
-    console.log(recipeThatIwantIngredientsFor)
+    console.log(details)
 });
 
 module.exports = router;
