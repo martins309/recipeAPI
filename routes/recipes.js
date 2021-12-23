@@ -26,13 +26,15 @@ router.get("/recipes/details/:name", (req, res) => {
     const recipeThatIwantIngredientsFor = recipes.filter(eachRecipe => eachRecipe.name.toLowerCase() === name.toLowerCase())
     name ? recipeThatIwantIngredientsFor[0].ingredients : null
 
-    const details = {
-        ingredients: recipeThatIwantIngredientsFor[0].ingredients
+    const recipeDetails = {
+        details: {
+          ingredients: recipeThatIwantIngredientsFor[0].ingredients
+        }
     }
 
-    res.json(details)
+    res.json(recipeDetails)
         
-    console.log(details)
+    console.log(recipeDetails)
 });
 
 module.exports = router;
