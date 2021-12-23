@@ -24,11 +24,13 @@ router.get("/recipes", (req, res) => {
 router.get("/recipes/details/:name", (req, res) => {
     const { name } = req.params;  
     const recipeThatIwantIngredientsFor = recipes.filter(eachRecipe => eachRecipe.name.toLowerCase() === name.toLowerCase())
-    name ? recipeThatIwantIngredientsFor[0].ingredients : null
+    
+
 
     const recipeDetails = {
         details: {
-          ingredients: recipeThatIwantIngredientsFor[0].ingredients
+          ingredients: recipeThatIwantIngredientsFor[0].ingredients,
+          numSteps: recipeThatIwantIngredientsFor[0].instructions.length
         }
     }
 
