@@ -39,4 +39,10 @@ router.get("/recipes/details/:name", (req, res) => {
     console.log(recipeDetails)
 });
 
+
+
+router.post("/recipes", (rea, res) => {
+  
+})
+
 module.exports = router;
