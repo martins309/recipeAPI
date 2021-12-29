@@ -41,8 +41,20 @@ router.get("/recipes/details/:name", (req, res) => {
 
 
 
-router.post("/recipes", (rea, res) => {
+router.post("/recipes", (req, res) => {
+  const newRecipe = {
+    name: req.body.name,
+    ingredients:[],
+    instructions:[]
+
+
+  }
+
   
+
+
+  console.log(newRecipe)
+
 })
 
 module.exports = router;
