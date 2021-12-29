@@ -46,9 +46,9 @@ router.post("/recipes", (req, res) => {
     name: req.body.name,
     ingredients:[],
     instructions:[]
-
-
   }
+
+  recipes.push(newRecipe);
 
   
 
