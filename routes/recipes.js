@@ -44,8 +44,8 @@ router.get("/recipes/details/:name", (req, res) => {
 router.post("/recipes", (req, res) => {
   const newRecipe = {
     name: req.body.name,
-    ingredients:[],
-    instructions:[]
+    ingredients: req.body.ingredients,
+    instructions: req.body.instructions
   }
 
   recipes.push(newRecipe);
@@ -53,7 +53,7 @@ router.post("/recipes", (req, res) => {
   
 
 
-  console.log(newRecipe)
+  console.log(recipes)
 
 })
 
