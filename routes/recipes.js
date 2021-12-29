@@ -42,17 +42,21 @@ router.get("/recipes/details/:name", (req, res) => {
 
 
 router.post("/recipes", (req, res) => {
+   
+   const recipeFilterMethod = recipes.filter(recipeName => recipeName.name.toLowerCase())
+  
   const newRecipe = {
     name: req.body.name,
     ingredients: req.body.ingredients,
     instructions: req.body.instructions
   }
 
-  recipes.push(newRecipe);
-
+ 
+    recipes.push(newRecipe);
+  
 
   console.log(recipes)
-  res.json(newRecipe)
+  res.send(newRecipe)
 })
 
 module.exports = router;
