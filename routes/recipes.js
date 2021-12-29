@@ -42,8 +42,7 @@ router.get("/recipes/details/:name", (req, res) => {
 
 
 router.post("/recipes", (req, res) => {
-   
-   const recipeFilterMethod = recipes.filter(recipeName => recipeName.name.toLowerCase())
+    
   
   const newRecipe = {
     name: req.body.name,
