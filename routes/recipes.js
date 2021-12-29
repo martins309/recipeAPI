@@ -50,11 +50,9 @@ router.post("/recipes", (req, res) => {
 
   recipes.push(newRecipe);
 
-  
-
 
   console.log(recipes)
-
+  res.json(newRecipe)
 })
 
 module.exports = router;
