@@ -35,11 +35,8 @@ router.get("/recipes/details/:name", (req, res) => {
         }
     }
 
-  
-
-    
-        
-    console.log(recipeThatIwantIngredientsFor)
+   res.json(recipeDetails)
+ 
 });
 
 
