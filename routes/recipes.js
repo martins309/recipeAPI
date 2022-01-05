@@ -16,17 +16,18 @@ router.get("/", (req, res) => {
 router.get("/recipes", (req, res) => {
     
   const recipeObj = {
-    recipeNames: [recipes[0].name, recipes[1].name, recipes[2].name]
+    recipeNames: [recipes[0].name, recipes[1].name, recipes[2].name] 
   };
   res.json(recipeObj);
 });
 
+
+
+
 router.get("/recipes/details/:name", (req, res) => {
     const { name } = req.params;  
     const recipeThatIwantIngredientsFor = recipes.filter(eachRecipe => eachRecipe.name.toLowerCase() === name.toLowerCase())
-    
-
-
+   
     const recipeDetails = {
         details: {
           ingredients: recipeThatIwantIngredientsFor[0].ingredients,
@@ -34,25 +35,28 @@ router.get("/recipes/details/:name", (req, res) => {
         }
     }
 
-    res.json(recipeDetails)
+  
+
+    
         
-    console.log(recipeDetails)
+    console.log(recipeThatIwantIngredientsFor)
 });
 
 
 
 router.post("/recipes", (req, res) => {
     
-  
   const newRecipe = {
     name: req.body.name,
     ingredients: req.body.ingredients,
     instructions: req.body.instructions
   }
 
- 
-    recipes.push(newRecipe);
-  
+  if(req.body.name){
+    res.send("it already exists")
+  }
+
+  recipes.push(newRecipe)
 
   console.log(recipes)
   res.send(newRecipe)
