@@ -35,7 +35,13 @@ router.get("/recipes/details/:name", (req, res) => {
         }
     }
 
-   res.json(recipeDetails)
+      if(name === recipeThatIwantIngredientsFor) {
+        res.json(recipeDetails)
+      }else {
+        return {}
+      }
+
+   
  
 });
 
@@ -51,12 +57,14 @@ router.post("/recipes", (req, res) => {
 
   if(req.body.name){
     res.send("it already exists")
+  }else {
+    res.send(newRecipe)
   }
 
   recipes.push(newRecipe)
 
   console.log(recipes)
-  res.send(newRecipe)
+  
 })
 
 module.exports = router;
