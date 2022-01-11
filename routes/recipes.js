@@ -8,12 +8,11 @@ This Recipe API data looks like this:
   }
 ]
 
-which means inorder to git it you have to first refrence the data is RecipeApiData[0] 
+which means inorder to get it you have to first reference the data in RecipeApiData[0] 
 
-Now... you can descructure from that.
+Then... you can descructure from that.
 
-
-const [{recipes}] = require("../data");
+const RecipeApiData = require("../data");
 const { recipes } = RecipeApiData[0]
 
 
